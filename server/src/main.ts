@@ -30,9 +30,12 @@ app.get("/mailboxes", async (inRequest: Request, inResponse: Response) => {
   try {
     const imapWorker: IMAP.Worker = new IMAP.Worker(serverInfo);
     const mailboxes: IMAP.IMailbox[] = await imapWorker.listMailboxes();
+    console.log("Working");
     inResponse.json(mailboxes);
   } catch (inError) {
     inResponse.send("error");
+    console.log(inError);
+    
   }
 });
 
@@ -125,3 +128,5 @@ app.delete(
     }
   }
 );
+
+app.listen(8080);
