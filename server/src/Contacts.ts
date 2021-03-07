@@ -114,5 +114,24 @@ export class Worker {
 
   } /* End deleteContact(). */
 
+  public updateContact(inContact:IContact):Promise<string>{
+    return new Promise((inResolve,inReject)=>{
+      this.db.update(
+        {_id : inContact._id},
+        {name : inContact.name, email : inContact.email},
+        {},
+        (inError: Error | null, inNumRemoved: number) => {
+          if (inError) {
+            console.log("Contacts.Worker.updateContact(): Error", inError);
+            inReject(inError);
+          } else {
+            console.log("Contacts.Worker.updateContact(): Ok", inNumRemoved);
+            inResolve(`Updated: ${inNumRemoved}`);
+          }
+        }
+        )
+    })
+  }
+
 
 } /* End class. */

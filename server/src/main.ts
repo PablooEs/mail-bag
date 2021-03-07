@@ -129,6 +129,20 @@ app.delete(
   }
 );
 
+app.put(
+  "/contacts/:id",
+  async (inRequest: Request, inResponse: Response)=>{
+    try{
+      const contactsWorker: Contacts.Worker = new Contacts.Worker();
+      const contact: IContact = inRequest.body;
+      await contactsWorker.updateContact(contact);
+      inResponse.send("ok");
+    }catch(inError){
+      inResponse.send("error");
+    }
+  }
+)
+
 // Start app listening.
 app.listen(80, () => {
   console.log("MailBag server open for requests");
