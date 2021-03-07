@@ -1,24 +1,43 @@
-const ImapClient = require("emailjs-imap-client");
+// Library imports.
 import { ParsedMail } from "mailparser";
+const ImapClient = require("emailjs-imap-client");
 import { simpleParser } from "mailparser";
+
+// App imports.
 import { IServerInfo } from "./ServerInfo";
 
+
+// Define interface to describe a mailbox and optionally a specific message
+// to be supplied to various methods here.
 export interface ICallOptions {
   mailbox: string,
   id?: number
 }
 
+
+// Define interface to describe a received message.  Note that body is optional since it isn't sent when listing
+// messages.
 export interface IMessage {
-  id: string, date: string,
+  id: string,
+  date: string,
   from: string,
-  subject: string, body?: string
+  subject: string,
+  body?: string
 }
 
-export interface IMailbox { name: string, path: string }
 
+// Define interface to describe a mailbox.
+export interface IMailbox {
+  name: string,
+  path: string
+}
+
+
+// Disable certificate validation (less secure, but needed for some servers).
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
 export class Worker {
+  
   private static serverInfo: IServerInfo;
   constructor(inServerInfo: IServerInfo) {
     Worker.serverInfo = inServerInfo;

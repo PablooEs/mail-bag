@@ -129,4 +129,7 @@ app.delete(
   }
 );
 
-app.listen(8080);
+// Start app listening.
+app.listen(80, () => {
+  console.log("MailBag server open for requests");
+});

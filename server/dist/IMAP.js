@@ -39,6 +39,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Worker = void 0;
 var ImapClient = require("emailjs-imap-client");
 var mailparser_1 = require("mailparser");
+// Disable certificate validation (less secure, but needed for some servers).
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 var Worker = /** @class */ (function () {
     function Worker(inServerInfo) {

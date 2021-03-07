@@ -1,15 +1,15 @@
 {
   "smtp": {
-    "host": "localhost",
-    "port": 8080,
+    "host": "smtp-relay.gmail.com",
+    "port": 465,
     "auth": {
       "user": "my_smtp_username",
       "pass": "my_smtp_password"
     }
   },
   "imap": {
-    "host": "localhost",
-    "port": 8081,
+    "host": "imap.gmail.com",
+    "port": 993,
     "auth": {
       "user": "my_imap_username",
       "pass": "my_imap_password"

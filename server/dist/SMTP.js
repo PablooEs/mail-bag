@@ -21,7 +21,6 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Worker = void 0;
 var nodemailer = __importStar(require("nodemailer"));
-//const nodemailer = require("nodemailer");
 var Worker = /** @class */ (function () {
     function Worker(inServerInfo) {
         Worker.serverInfo = inServerInfo;

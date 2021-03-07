@@ -243,5 +243,8 @@ app.delete("/contacts/:id", function (inRequest, inResponse) { return __awaiter(
         }
     });
 }); });
-app.listen(8080);
+// Start app listening.
+app.listen(80, function () {
+    console.log("MailBag server open for requests");
+});
 //# sourceMappingURL=main.js.map
