@@ -10,16 +10,12 @@ module.exports = {
   },
   module: {
     rules: [
-      {
-        test: /\.(js|jsx)$/,
-        use: "babel-loader",
-        exclude: /node-modules/,
-      },
-      {
-        test: /\.css$/,
-        use: ["style-loader", "css-loader"],
-      },
       { test: /\.tsx?$/, loader: "awesome-typescript-loader" },
+      {
+        test: /\.js$/,
+        enforce: "pre",
+        use: ["source-map-loader"],
+      },
     ],
   },
   resolve: {
@@ -27,12 +23,8 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: "Pablo",
-      template: path.resolve(__dirname, "src/index.html"),
+      template: "src/index.html",
     }),
   ],
-  devServer: {
-    contentBase: path.resolve(__dirname, "./dist"),
-    hot: true,
-  },
+  devtool: "source-map",
 };

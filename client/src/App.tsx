@@ -1,22 +1,9 @@
 import * as React from "react";
+import { BaseLayout } from "./components/BaseLayout";
 
-interface AppProps {
-  title: string;
-  href: string;
-}
-
-const App: React.FC<AppProps> = ({ title, href }) => (
-  <div
-    style={{
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      height: "100vh",
-    }}
-  >
-    <h1>
-      Hello World from <a href={href}>{title}</a>
-    </h1>
+const App: React.FC = () => (
+  <div>
+    <BaseLayout name="Pablo" />
   </div>
 );
 

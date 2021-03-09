@@ -1,9 +1,12 @@
 {
     "compilerOptions": {
+        "lib": ["es6","dom"],
         "allowSyntheticDefaultImports": true,
         "jsx": "react",
         "module": "commonjs",
         "noImplicitAny": true,
+        "noImplicitThis": true,
+        "strictNullChecks": true,
         "outDir": "./build/",
         "preserveConstEnums": true,
         "removeComments": true,
