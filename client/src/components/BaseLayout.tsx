@@ -2,6 +2,10 @@ import * as React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
+import { Nav } from "./Nav";
+import { Menu } from "./Menu";
+import { Content } from "./Content";
+import { Contacts } from "./Contacts";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -9,8 +13,8 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     padding: theme.spacing(2),
-    textAlign: "center",
     color: theme.palette.text.secondary,
+    height: "100vh",
   },
 }));
 
@@ -22,28 +26,27 @@ export const BaseLayout: React.FC<Props> = (props) => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <div>{props.name}</div>
-      <Grid container spacing={3}>
-        <Grid item xs={12}>
-          <Paper className={classes.paper}>xs=12</Paper>
+      <Nav name="MailBag" />
+      <Grid
+        container
+        direction="row-reverse"
+        justify="space-evenly"
+        alignItems="stretch"
+      >
+        <Grid xs={3}>
+          <Paper className={classes.paper}>
+            <Menu />
+          </Paper>
         </Grid>
-        <Grid item xs={6}>
-          <Paper className={classes.paper}>xs=6</Paper>
+        <Grid xs={6}>
+          <Paper className={classes.paper}>
+            <Content />
+          </Paper>
         </Grid>
-        <Grid item xs={6}>
-          <Paper className={classes.paper}>xs=6</Paper>
-        </Grid>
-        <Grid item xs={3}>
-          <Paper className={classes.paper}>xs=3</Paper>
-        </Grid>
-        <Grid item xs={3}>
-          <Paper className={classes.paper}>xs=3</Paper>
-        </Grid>
-        <Grid item xs={3}>
-          <Paper className={classes.paper}>xs=3</Paper>
-        </Grid>
-        <Grid item xs={3}>
-          <Paper className={classes.paper}>xs=3</Paper>
+        <Grid xs={3}>
+          <Paper className={classes.paper}>
+            <Contacts />
+          </Paper>
         </Grid>
       </Grid>
     </div>
