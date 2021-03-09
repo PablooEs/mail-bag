@@ -2,7 +2,7 @@ import * as React from "react";
 import * as ContactsCall from "../code/Contacts";
 import { IContact } from "../code/Contacts";
 
-export const Contacts: React.FC = () => {
+export const Contacts: React.FC = (props) => {
   const [contacts, setContacts] = React.useState<IContact[]>([]);
   React.useEffect(() => {
     const contactsWorker: ContactsCall.Worker = new ContactsCall.Worker();
