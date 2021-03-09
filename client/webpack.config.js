@@ -1,21 +1,30 @@
-const HtmlWebPackPlugin = require("html-webpack-plugin");
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+
 module.exports = {
-  entry: "./src/code/main.tsx",
-  resolve: { extensions: [".ts", ".tsx", ".js"] },
+  entry: path.resolve(__dirname, "src/index.js"),
+  mode: "development",
+  output: {
+    path: path.resolve(__dirname, "public"),
+    filename: "bundle.js",
+  },
   module: {
     rules: [
-      { test: /\.html$/, use: { loader: "html-loader" } },
-      { test: /\.css$/, use: ["style-loader", "css-loader"] },
-      { test: /\.tsx?$/, loader: "awesome-typescript-loader" },
+      {
+        test: /\.(js|jsx)$/,
+        use: "babel-loader",
+        exclude: /node-modules/,
+      },
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"],
+      },
     ],
   },
   plugins: [
-    new HtmlWebPackPlugin({
-      template: "./src/index.html",
-      filename: "./index.html",
+    new HtmlWebpackPlugin({
+      title: "Pablo",
+      template: path.resolve(__dirname, "src/index.html"),
     }),
   ],
-  performance: { hints: false },
-  watch: true,
-  devtool: "source-map",
 };
