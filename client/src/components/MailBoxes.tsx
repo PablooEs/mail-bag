@@ -1,6 +1,9 @@
 import * as React from "react";
 import { IMailbox } from "../code/IMAP";
 import * as IMAP from "../code/IMAP";
+import ListItem from "@material-ui/core/ListItem";
+import List from "@material-ui/core/List";
+import Chip from "@material-ui/core/Chip";
 
 export const MailBoxes: React.FC = () => {
   const [mailBoxes, setMailBoxes] = React.useState<IMailbox[]>([]);
@@ -12,14 +15,19 @@ export const MailBoxes: React.FC = () => {
     }
     listContacts();
   }, []);
+
   return (
     <div>
-      {mailBoxes.map((mail) => (
-        <div>
-          <p>{mail.name}</p>
-          <p>{mail.path}</p>
-        </div>
-      ))}
+      <List>
+        {mailBoxes.map((mail) => (
+          <>
+            <Chip
+              label={`${mail.name}`}
+              style={{ width: 200, marginBottom: 10 }}
+            />
+          </>
+        ))}
+      </List>
     </div>
   );
 };
