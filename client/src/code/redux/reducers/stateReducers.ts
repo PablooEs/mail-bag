@@ -18,7 +18,8 @@ export function stateReducer(state = inState, action: any): IState {
     case "LIST_MESSAGES":
       return {
         ...state,
-        messages: action.payload,
+        messages: action.payload.messages,
+        mailbox: action.payload.mailbox,
       };
     case "CHANGE_MAILBOX":
       return {

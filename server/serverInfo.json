@@ -11,7 +11,7 @@
     "host": "imap.gmail.com",
     "port": 993,
     "auth": {
-      "user": "sub@gmail.com",
+      "user": "asd@gmail.com",
       "pass": ""
     }
   }

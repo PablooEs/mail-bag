@@ -18,6 +18,9 @@ export const ListMessages: React.FC = () => {
   React.useEffect(() => {
     dispatch(listMessages(mailbox));
   }, []);
+  const showMessage = (id: string) => {
+    return;
+  };
 
   return (
     <div>
@@ -32,7 +35,10 @@ export const ListMessages: React.FC = () => {
         {messages && (
           <TableBody>
             {messages.map((message) => (
-              <TableRow key={message.id}>
+              <TableRow
+                key={message.id}
+                onClick={() => showMessage(message.id)}
+              >
                 <TableCell>
                   {new Date(message.date).toLocaleDateString()}
                 </TableCell>
