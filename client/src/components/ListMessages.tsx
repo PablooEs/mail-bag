@@ -1,26 +1,22 @@
 import * as React from "react";
 import { IRootState } from "../code/redux/store";
 import { useDispatch, useSelector } from "react-redux";
-import { IState } from "./BaseLayout";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
-import * as IMAPCall from "../code/IMAP";
+import { listMessages } from "../code/redux/actions/actions";
 
 export const ListMessages: React.FC = () => {
   const viewMessages = (state: IRootState) => state.state.messages;
+  const currentMailBox = (state: IRootState) => state.state.mailbox;
   const messages = useSelector(viewMessages);
+  const mailbox = useSelector(currentMailBox);
   const dispatch = useDispatch();
 
   React.useEffect(() => {
-    const IMAPWorker: IMAPCall.Worker = new IMAPCall.Worker();
-    async function listMessages() {
-      const listedMessages = await IMAPWorker.listMessages("INBOX");
-      dispatch({ type: "LIST_MESSAGES", payload: listedMessages });
-    }
-    listMessages();
+    dispatch(listMessages(mailbox));
   }, []);
 
   return (

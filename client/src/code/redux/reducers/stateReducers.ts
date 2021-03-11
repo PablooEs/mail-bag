@@ -1,4 +1,5 @@
 import { IState } from "../types/State";
+import { IMessage } from "../../IMAP";
 
 const inState: IState = {
   view: "welcome",
@@ -18,6 +19,11 @@ export function stateReducer(state = inState, action: any): IState {
       return {
         ...state,
         messages: action.payload,
+      };
+    case "CHANGE_MAILBOX":
+      return {
+        ...state,
+        mailbox: action.payload,
       };
     default:
       return state;

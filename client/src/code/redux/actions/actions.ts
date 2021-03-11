@@ -1,6 +1,12 @@
-import { IState } from "../types/State";
+import * as IMAPCall from "../../IMAP";
 
-export const setState = (state: IState[]) => ({
-  type: "LIST_MESSAGES",
-  state,
+export const listMessages = (mailbox: string) => async (dispatch: any) => {
+  const IMAPWorker: IMAPCall.Worker = new IMAPCall.Worker();
+  const listedMessages = await IMAPWorker.listMessages(mailbox);
+  dispatch({ type: "LIST_MESSAGES", payload: listedMessages });
+};
+
+export const setMailBox = (payload: string) => ({
+  type: "CHANGE_MAILBOX",
+  payload,
 });
