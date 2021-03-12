@@ -13,6 +13,7 @@ export const ListMessages: React.FC = () => {
   const currentMailBox = (state: IRootState) => state.state.mailbox;
   const messages = useSelector(viewMessages);
   const mailbox = useSelector(currentMailBox);
+  const [start, setStart] = React.useState(0);
   const dispatch = useDispatch();
 
   React.useEffect(() => {
@@ -34,7 +35,7 @@ export const ListMessages: React.FC = () => {
         </TableHead>
         {messages && (
           <TableBody>
-            {messages.map((message) => (
+            {messages.slice(start, start + 5).map((message) => (
               <TableRow
                 key={message.id}
                 onClick={() => showMessage(message.id)}
@@ -49,6 +50,22 @@ export const ListMessages: React.FC = () => {
           </TableBody>
         )}
       </Table>
+      <div>
+        <button
+          onClick={() => {
+            start <= messages.length ? setStart(start + 5) : {};
+          }}
+        >
+          Next
+        </button>
+        <button
+          onClick={() => {
+            setStart(start - 5);
+          }}
+        >
+          Previous
+        </button>
+      </div>
     </div>
   );
 };

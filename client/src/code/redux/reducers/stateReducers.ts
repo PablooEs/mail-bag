@@ -1,5 +1,4 @@
 import { IState } from "../types/State";
-import { IMessage } from "../../IMAP";
 
 const inState: IState = {
   view: "welcome",
