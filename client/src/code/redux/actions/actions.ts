@@ -32,3 +32,8 @@ export const setMailBox = (payload: string) => ({
   type: "CHANGE_MAILBOX",
   payload,
 });
+
+export const changeView = (payload: string) => ({
+  type: "CHANGE_VIEW",
+  payload,
+});

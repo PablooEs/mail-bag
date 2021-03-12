@@ -5,6 +5,7 @@ import { IRootState } from "../code/redux/store";
 import { useSelector } from "react-redux";
 import { ListMessages } from "./ListMessages";
 import { MessageDetail } from "./MessageDetail";
+import { AddContact } from "./AddContact";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -19,16 +20,22 @@ export const Content: React.FC = () => {
   const selectMessage = (state: IRootState) => state.state.messageDetail;
   const message = useSelector(selectMessage);
 
-  return (
+  return view === "addContact" ? (
+    <div>
+      <AddContact />
+    </div>
+  ) : view === "welcome" ? (
     <div>
       <Grid container direction="column" justify="center" alignItems="stretch">
         <Grid xs={12} spacing={3}>
-          {view === "welcome" && <ListMessages />}
+          <ListMessages />
         </Grid>
         <Grid xs={12} spacing={3}>
           <MessageDetail />
         </Grid>
       </Grid>
     </div>
+  ) : (
+    <div></div>
   );
 };

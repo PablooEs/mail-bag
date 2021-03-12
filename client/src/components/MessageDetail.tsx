@@ -1,7 +1,6 @@
 import * as React from "react";
 import { IRootState } from "../code/redux/store";
 import { useSelector } from "react-redux";
-import { IMessage } from "../code/IMAP";
 
 export const MessageDetail: React.FC = () => {
   const selectMessage = (state: IRootState) => state.state.messageDetail;

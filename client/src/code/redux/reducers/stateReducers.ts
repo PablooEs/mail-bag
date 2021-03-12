@@ -10,14 +10,10 @@ const inState: IState = {
 
 export function stateReducer(state = inState, action: any): IState {
   switch (action.type) {
-    case "SHOW_MESSAGE":
-      return {
-        ...state,
-        view: "message",
-      };
     case "LIST_MESSAGES":
       return {
         ...state,
+        view: "welcome",
         messages: action.payload.messages,
         mailbox: action.payload.mailbox,
       };
@@ -30,6 +26,11 @@ export function stateReducer(state = inState, action: any): IState {
       return {
         ...state,
         messageDetail: action.payload,
+      };
+    case "CHANGE_VIEW":
+      return {
+        ...state,
+        view: action.payload,
       };
     default:
       return state;
