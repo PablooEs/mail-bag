@@ -1,7 +1,6 @@
 import * as React from "react";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
-import { IState } from "./BaseLayout";
 import { MailBoxes } from "./MailBoxes";
 import { IRootState } from "../code/redux/store";
 import { useSelector } from "react-redux";

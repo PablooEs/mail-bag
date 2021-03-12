@@ -18,13 +18,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export interface IState {
-  view: string;
-}
-
 export const BaseLayout: React.FC = () => {
   const classes = useStyles();
-  const [state, setState] = React.useState<IState>({ view: "welcome" });
   return (
     <div className={classes.root}>
       <Nav name="MailBag" />
@@ -41,7 +36,7 @@ export const BaseLayout: React.FC = () => {
         </Grid>
         <Grid xs={6}>
           <Paper className={classes.paper}>
-            <Content view={state.view} />
+            <Content />
           </Paper>
         </Grid>
         <Grid xs={3}>

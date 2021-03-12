@@ -6,7 +6,11 @@ import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
-import { listMessages } from "../code/redux/actions/actions";
+import {
+  listMessages,
+  showMessageDetails,
+} from "../code/redux/actions/actions";
+import { IMessage } from "../code/IMAP";
 
 export const ListMessages: React.FC = () => {
   const viewMessages = (state: IRootState) => state.state.messages;
@@ -19,8 +23,8 @@ export const ListMessages: React.FC = () => {
   React.useEffect(() => {
     dispatch(listMessages(mailbox));
   }, []);
-  const showMessage = (id: string) => {
-    return;
+  const showMessage = (message: IMessage, mailbox: string) => {
+    dispatch(showMessageDetails(message, mailbox));
   };
 
   return (
@@ -38,7 +42,7 @@ export const ListMessages: React.FC = () => {
             {messages.slice(start, start + 5).map((message) => (
               <TableRow
                 key={message.id}
-                onClick={() => showMessage(message.id)}
+                onClick={() => showMessage(message, mailbox)}
               >
                 <TableCell>
                   {new Date(message.date).toLocaleDateString()}

@@ -1,10 +1,10 @@
 import * as React from "react";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
-import { IState } from "./BaseLayout";
 import { IRootState } from "../code/redux/store";
 import { useSelector } from "react-redux";
 import { ListMessages } from "./ListMessages";
+import { MessageDetail } from "./MessageDetail";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -12,10 +12,12 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export const Content: React.FC<IState> = (props) => {
+export const Content: React.FC = () => {
   const classes = useStyles();
   const selectView = (state: IRootState) => state.state.view;
   const view = useSelector(selectView);
+  const selectMessage = (state: IRootState) => state.state.messageDetail;
+  const message = useSelector(selectMessage);
 
   return (
     <div>
@@ -24,7 +26,7 @@ export const Content: React.FC<IState> = (props) => {
           {view === "welcome" && <ListMessages />}
         </Grid>
         <Grid xs={12} spacing={3}>
-          <h1>Content:{view}</h1>
+          <MessageDetail />
         </Grid>
       </Grid>
     </div>
