@@ -7,7 +7,6 @@ export const MessageDetail: React.FC = () => {
   const message = useSelector(selectMessage);
   return (
     <ul>
-      {console.log(message)}
       <li>{message.from}</li>
       <li>{message.date}</li>
       <li>{message.subject}</li>

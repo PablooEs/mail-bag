@@ -29,17 +29,17 @@ export const BaseLayout: React.FC = () => {
         justify="space-evenly"
         alignItems="stretch"
       >
-        <Grid xs={3}>
+        <Grid item xs={3}>
           <Paper className={classes.paper}>
             <Contacts />
           </Paper>
         </Grid>
-        <Grid xs={6}>
+        <Grid item xs={6}>
           <Paper className={classes.paper}>
             <Content />
           </Paper>
         </Grid>
-        <Grid xs={3}>
+        <Grid item xs={3}>
           <Paper className={classes.paper}>
             <Menu />
           </Paper>

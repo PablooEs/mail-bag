@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { ListMessages } from "./ListMessages";
 import { MessageDetail } from "./MessageDetail";
 import { AddContact } from "./AddContact";
+import { NewMessage } from "./NewMessage";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -27,15 +28,17 @@ export const Content: React.FC = () => {
   ) : view === "welcome" ? (
     <div>
       <Grid container direction="column" justify="center" alignItems="stretch">
-        <Grid xs={12} spacing={3}>
+        <Grid container spacing={3}>
           <ListMessages />
         </Grid>
-        <Grid xs={12} spacing={3}>
+        <Grid container spacing={3}>
           <MessageDetail />
         </Grid>
       </Grid>
     </div>
+  ) : view === "newMessage" ? (
+    <NewMessage />
   ) : (
-    <div></div>
+    <></>
   );
 };

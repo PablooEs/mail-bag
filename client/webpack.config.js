@@ -24,6 +24,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: "src/index.html",
+      favicon: path.resolve(__dirname, "src/faviconM.ico"),
     }),
   ],
   devtool: "source-map",

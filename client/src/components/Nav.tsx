@@ -38,8 +38,14 @@ export const Nav: React.FC<Props> = (props) => {
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
-            {props.name}
+            <Button
+              color="inherit"
+              onClick={() => dispatch(changeView("welcome"))}
+            >
+              {props.name}
+            </Button>
           </Typography>
+
           <Button
             color="inherit"
             onClick={() => dispatch(changeView("addContact"))}
@@ -47,7 +53,10 @@ export const Nav: React.FC<Props> = (props) => {
             New Contact
             <PersonAddIcon />
           </Button>
-          <Button color="inherit">
+          <Button
+            color="inherit"
+            onClick={() => dispatch(changeView("newMessage"))}
+          >
             New Message
             <EmailIcon />
           </Button>

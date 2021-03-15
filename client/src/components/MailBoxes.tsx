@@ -20,7 +20,6 @@ export const MailBoxes: React.FC = () => {
 
   const handleClick = (path: string) => {
     dispatch(listMessages(path));
-    console.log(path);
   };
 
   return (
