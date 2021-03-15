@@ -33,9 +33,7 @@ app.get("/mailboxes", async (inRequest: Request, inResponse: Response) => {
     console.log("Working");
     inResponse.json(mailboxes);
   } catch (inError) {
-    inResponse.send("error");
-    console.log(inError);
-    
+    inResponse.send([]);
   }
 });
 
@@ -49,7 +47,7 @@ app.get(
       });
       inResponse.json(messages);
     } catch (inError) {
-      inResponse.send("error");
+      inResponse.send([]);
     }
   }
 );
@@ -129,19 +127,16 @@ app.delete(
   }
 );
 
-app.put(
-  "/contacts/:id",
-  async (inRequest: Request, inResponse: Response)=>{
-    try{
-      const contactsWorker: Contacts.Worker = new Contacts.Worker();
-      const contact: IContact = inRequest.body;
-      await contactsWorker.updateContact(contact);
-      inResponse.send("ok");
-    }catch(inError){
-      inResponse.send("error");
-    }
+app.put("/contacts/:id", async (inRequest: Request, inResponse: Response) => {
+  try {
+    const contactsWorker: Contacts.Worker = new Contacts.Worker();
+    const contact: IContact = inRequest.body;
+    await contactsWorker.updateContact(contact);
+    inResponse.send("ok");
+  } catch (inError) {
+    inResponse.send("error");
   }
-)
+});
 
 // Start app listening.
 app.listen(80, () => {

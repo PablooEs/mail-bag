@@ -15,7 +15,7 @@ import { IMessage } from "../code/IMAP";
 export const ListMessages: React.FC = () => {
   const viewMessages = (state: IRootState) => state.state.messages;
   const currentMailBox = (state: IRootState) => state.state.mailbox;
-  const messages = useSelector(viewMessages);
+  const messages: IMessage[] = useSelector(viewMessages);
   const mailbox = useSelector(currentMailBox);
   const [start, setStart] = React.useState(0);
   const dispatch = useDispatch();

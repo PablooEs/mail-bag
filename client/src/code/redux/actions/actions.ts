@@ -3,7 +3,7 @@ import { IMessage } from "../../IMAP";
 
 export const listMessages = (mailbox: string) => async (dispatch: any) => {
   const IMAPWorker: IMAPCall.Worker = new IMAPCall.Worker();
-  const listedMessages = await IMAPWorker.listMessages(mailbox);
+  const listedMessages: IMessage[] = await IMAPWorker.listMessages(mailbox);
   dispatch({
     type: "LIST_MESSAGES",
     payload: { messages: listedMessages, mailbox: mailbox },
